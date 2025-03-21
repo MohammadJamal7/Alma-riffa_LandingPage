@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دورات الكتابة الأكاديمية والتحليل الإحصائي</title>
+    <!-- Bootstrap RTL CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.rtl.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap');
+        
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #1a73e8;
+            --accent-color: #ff5757;
+            --light-bg: #f8f9fa;
+            --dark-bg: #1c2331;
+            --gradient-primary: linear-gradient(135deg, #1a73e8 0%, #3b5998 100%);
+            --gradient-secondary: linear-gradient(135deg, #ff5757 0%, #ff4848 100%);
+            --shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 15px 30px rgba(0, 0, 0, 0.12);
+            --border-radius-sm: 8px;
+            --border-radius-md: 12px;
+            --border-radius-lg: 20px;
+        }
+        
+        body {
+            font-family: 'Tajawal', sans-serif;
+            line-height: 1.7;
+            color: #333;
+            overflow-x: hidden;
+        }
+        
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--secondary-color);
+            border-radius: 10px;
+        }
+        
+        /* Navbar Styling */
+        .navbar {
+            padding: 15px 0;
+            transition: all 0.4s ease;
+        }
+        
+        .navbar.scrolled {
+            background-color: #fff !important;
+            box-shadow: var(--shadow-md);
+            padding: 10px 0;
+        }
+        
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 1.6rem;
+        }
+        
+        .navbar-brand span {
+            color: var(--secondary-color);
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            position: relative;
+            margin: 0 10px;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--secondary-color);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(rgba(28, 35, 49, 0.9), rgba(28, 35, 49, 0.8)), url('/api/placeholder/1200/600');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            padding: 150px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, rgba(26, 115, 232, 0.2) 0%, transparent 70%);
+        }
+        
+        .hero-badges {
+            position: relative;
+            z-index: 2;
+            margin-bottom: 20px;
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 0.85rem;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .badge-primary {
+            background: var(--gradient-primary);
+            color: white;
+        }
+        
+        .badge-secondary {
+            background: var(--gradient-secondary);
+            color: white;
+        }
+        
+        /* Floating Elements */
+        .floating {
+            animation: floating 3s ease infinite;
+            position: absolute;
+            opacity: 0.1;
+            z-index: 1;
+        }
+        
+        .floating-1 {
+            top: 15%;
+            left: 5%;
+            width: 60px;
+            height: 60px;
+            background: var(--secondary-color);
+            border-radius: 50%;
+        }
+        
+        .floating-2 {
+            bottom: 10%;
+            right: 10%;
+            width: 80px;
+            height: 80px;
+            background: var(--accent-color);
+            border-radius: 50%;
+        }
+        
+        .floating-3 {
+            top: 40%;
+            right: 5%;
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 50%;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+        
+        /* Course Cards */
+        .course-card {
+            border-radius: var(--border-radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all 0.4s ease;
+            position: relative;
+            z-index: 1;
+            background: white;
+            border: none;
+        }
+        
+        .course-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-primary);
+            z-index: 2;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-15px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .course-card:hover .course-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+        
+        .course-icon-wrapper {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: rgba(26, 115, 232, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            transition: all 0.3s ease;
+        }
+        
+        .course-card:hover .course-icon-wrapper {
+            background: rgba(26, 115, 232, 0.2);
+        }
+        
+        .course-icon {
+            font-size: 3.5rem;
+            color: var(--secondary-color);
+            transition: all 0.4s ease;
+        }
+        
+        .course-details {
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            padding-top: 20px;
+        }
+        
+        .course-details i {
+            font-size: 1.1rem;
+        }
+        
+        /* Benefits Section */
+        .benefits-item {
+            padding: 30px;
+            border-radius: var(--border-radius-md);
+            background-color: white;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .benefits-item::before {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: -100%;
+            width: 200%;
+            height: 200%;
+            background: var(--gradient-primary);
+            transition: all 0.6s ease;
+            opacity: 0;
+            z-index: -1;
+            transform: rotate(45deg);
+        }
+        
+        .benefits-item:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+            color: white;
+        }
+        
+        .benefits-item:hover::before {
+            top: -50%;
+            left: -50%;
+            opacity: 1;
+        }
+        
+        .benefits-item:hover .feature-icon,
+        .benefits-item:hover h4 {
+            color: white;
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        /* CTA Buttons */
+        .cta-button {
+            background: var(--gradient-secondary);
+            color: white;
+            border: none;
+            padding: 12px 32px;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 15px rgba(255, 87, 87, 0.4);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
+            z-index: -1;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 87, 87, 0.5);
+            color: white;
+        }
+        
+        .cta-button:hover::before {
+            left: 100%;
+        }
+        
+        .cta-secondary {
+            background: var(--gradient-primary);
+            box-shadow: 0 5px 15px rgba(26, 115, 232, 0.4);
+        }
+        
+        .cta-secondary:hover {
+            box-shadow: 0 8px 25px rgba(26, 115, 232, 0.5);
+        }
+        
+        /* Price Tags */
+        .price-tag {
+            background: var(--gradient-secondary);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            display: inline-block;
+            font-weight: 700;
+            box-shadow: 0 3px 10px rgba(255, 87, 87, 0.3);
+            margin-bottom: 20px;
+        }
+        
+        .discount {
+            text-decoration: line-through;
+            color: rgba(255, 255, 255, 0.7);
+            margin-right: 10px;
+            font-size: 0.9rem;
+        }
+        
+        /* Special Offer */
+        .special-offer-card {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            border-radius: var(--border-radius-md);
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .special-offer-price {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 25px;
+            border-radius: 50px;
+            display: inline-block;
+            margin: 20px 0;
+        }
+        
+        .special-offer-tag {
+            position: absolute;
+            top: 30px;
+            right: -35px;
+            background: var(--accent-color);
+            color: white;
+            padding: 5px 40px;
+            font-weight: 700;
+            transform: rotate(45deg);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Free Gifts Section */
+        .free-gift {
+            border: 2px dashed var(--accent-color);
+            padding: 25px;
+            border-radius: var(--border-radius-md);
+            background-color: rgba(255, 87, 87, 0.05);
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+        }
+        
+        .free-gift:hover {
+            transform: translateX(5px);
+            background-color: rgba(255, 87, 87, 0.1);
+        }
+        
+        /* Count Boxes */
+        .count-box {
+            padding: 30px 20px;
+            background-color: white;
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-md);
+            text-align: center;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+        
+        .count-box:hover {
+            transform: translateY(-5px);
+            border-bottom: 3px solid var(--secondary-color);
+        }
+        
+        .count-number {
+            font-size: 3rem;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+        
+        .count-text {
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+        
+        /* Instructor Section */
+        .instructor-section {
+            position: relative;
+        }
+        
+        .instructor-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(26, 115, 232, 0.05) 0%, rgba(26, 115, 232, 0) 100%);
+            z-index: -1;
+        }
+        
+        .instructor-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+        }
+        
+        .instructor-img:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .instructor-stat {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            box-shadow: var(--shadow-sm);
+            margin: 0 5px 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .instructor-stat:hover {
+            background: var(--secondary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .instructor-stat i {
+            margin-right: 8px;
+        }
+        
+        /* Testimonial Cards */
+        .testimonial-slider {
+            overflow: hidden;
+            padding: 30px 0;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            border-radius: var(--border-radius-md);
+            padding: 30px;
+            box-shadow: var(--shadow-md);
+            margin: 20px 10px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .testimonial-card::before {
+            content: '\f10d';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            color: rgba(26, 115, 232, 0.1);
+        }
+        
+        .testimonial-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid white;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .testimonial-rating {
+            color: #ffc107;
+            margin-top: 15px;
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            background: linear-gradient(135deg, rgba(26, 115, 232, 0.05) 0%, rgba(59, 89, 152, 0.05) 100%);
+        }
+        
+        .accordion-item {
+            border: none;
+            margin-bottom: 15px;
+            border-radius: var(--border-radius-md) !important;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .accordion-button {
+            padding: 20px 25px;
+            font-weight: 600;
+            color: var(--primary-color);
+            background-color: white;
+            border: none;
+        }
+        
+        .accordion-button:not(.collapsed) {
+            color: var(--secondary-color);
+            background-color: rgba(26, 115, 232, 0.05);
+        }
+        
+        .accordion-button:focus {
+            box-shadow: none;
+            border-color: rgba(26, 115, 232, 0.1);
+        }
+        
+        .accordion-button::after {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%231a73e8'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+        }
+        
+        /* Register Form Section */
+        .register-section {
+            background: linear-gradient(rgba(28, 35, 49, 0.9), rgba(28, 35, 49, 0.9)), url('/api/placeholder/1200/600');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            position: relative;
+        }
+        
+        .form-control {
+            padding: 12px 20px;
+            border-radius: 8px;
+            border: 1px solid #dee2e6;
+            margin-bottom: 20px;
+        }
+        
+        .form-control:focus {
+            box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.2);
+            border-color: var(--secondary-color);
+        }
+        
+        .form-label {
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-bg);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-title {
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--secondary-color);
+        }
+        
+        .footer-link {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        .footer-link:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .footer-link i {
+            margin-left: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-link:hover i {
+            transform: translateX(5px);
+        }
+        
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            color: white;
+        }
+        
+        .copyright {
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Section Headings */
+        .section-heading {
+            position: relative;
+            padding-bottom: 20px;
+            margin-bottom: 50px;
+            font-weight: 800;
+        }
+        
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--gradient-primary);
+        }
+        
+        /* Animations */
+        .section-subtitle {
+            color: var(--secondary-color);
+            font-weight: 500;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+        }
+        
+        /* Utilities */
+        .bg-light-gradient {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+        
+        .text-gradient {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* WhatsApp Button */
+        .whatsapp-btn {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: white;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+        }
+        
+        .whatsapp-btn:hover {
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
+        }
+        
+        /* Timer Styles */
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .countdown-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .countdown-number {
+            font-size: 2rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+        
+        .countdown-label {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 991px) {
+            .hero-section {
+                padding: 100px 0 70px;
+            }
+            
+            .course-card, .special-offer-card {
+                margin-bottom: 30px;
+            }
+        }
+        
+        @media (max-width: 767px) {
+            .countdown-item {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .countdown-number {
+                font-size: 1.5rem;
+            }
+            
+            .instructor-stat {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-transperent fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">
+                <span>أكاديمية</span> المعرفة
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#courses">الدورات</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#benefits">المميزات</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#instructor">المدرب</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#testimonials">الآراء</a>
+                    </li>
+                </ul>
+                <a href="#register" class="btn cta-button">احجز مقعدك الآن <i class="fas fa-arrow-left ms-2"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+        <div class="floating floating-1"></div>
+        <div class="floating floating-2"></div>
+        <div class="floating floating-3"></div>
+        
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 text-center" data-aos="fade-up">
+                    <div class="hero-badges">
+                        <span class="hero-badge badge-primary"><i class="fas fa-fire me-2"></i>الأكثر طلباً</span>
+                        <span class="hero-badge badge-secondary"><i class="fas fa-clock me-2"></i>خصم 30% لفترة محدودة</span>
+                    </div>
+                    
+                    <h1 class="display-4 fw-bold mb-4">أتقن مهارات الكتابة الأكاديمية <br>والتحليل الإحصائي</h1>
+                    <p class="lead mb-4">دورات مسجلة متخصصة تؤهلك للتميز في مجال البحث العلمي وتحليل البيانات باستخدام SPSS</p>
+                    
+                    <div class="countdown-timer" data-aos="fade-up" data-aos-delay="200">
+                        <div class="countdown-item">
+                            <div class="countdown-number">03</div>
+                            <div class="countdown-label">أيام</div>
+                        </div>
+                        <div class="countdown-item">
+                            <div class="countdown-number">12</div>
+                            <div class="countdown-label">ساعة</div>
+                        </div>
+                        <div class="countdown-item">
+                            <div class="countdown-number">45</div>
+                            <div class="countdown-label">دقيقة</div>
+                        </div>
+                        <div class="countdown-item">
+                            <div class="countdown-number">22</div>
+                            <div class="countdown-label">ثانية</div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-5">
+                        <a href="#register" class="btn cta-button btn-lg me-3 mb-3 mb-md-0"><i class="fas fa-user-graduate me-2"></i>احجز مقعدك الآن</a>
+                        <a href="#courses" class="btn cta-button cta-secondary btn-lg"><i class="fas fa-info-circle me-2"></i>اعرف المزيد</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses" class="py-5">
+        <div class="container py-5">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <div class="section-subtitle">دوراتنا المتخصصة</div>
+                <h2 class="section-heading">دورات احترافية لتطوير مهاراتك</h2>
+            </div>
+            
+            <div class="row">
+                <!-- Academic Writing Course -->
+                <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="course-card h-100">
+                        <div class="course-icon-wrapper">
+                            <i class="fas fa-pencil-alt course-icon"></i>
+                        </div>
+                        <div class="course-details p-4">
+                            <h4>دورة الكتابة الأكاديمية</h4>
+                            <p>دورة شاملة تعلمك أسس الكتابة الأكاديمية، أساليب البحث العلمي، وكيفية بناء أوراق بحثية محترفة.</p>
+                            <ul>
+                                <li><i class="fas fa-clock"></i> 12 ساعة</li>
+                                <li><i class="fas fa-cogs"></i> محاور الدورة: كتابة المقالات، التحليل النقدي، بناء البحوث</li>
+                                <li><i class="fas fa-check-circle"></i> تعلم كيفية كتابة أوراق بحثية بنجاح</li>
+                            </ul>
+                            <a href="#register" class="btn cta-button btn-lg">احجز مقعدك الآن</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- SPSS Course -->
+                <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="course-card h-100">
+                        <div class="course-icon-wrapper">
+                            <i class="fas fa-chart-line course-icon"></i>
+                        </div>
+                        <div class="course-details p-4">
+                            <h4>دورة التحليل الإحصائي باستخدام SPSS</h4>
+                            <p>دورة متخصصة في تعلم كيفية استخدام SPSS لتحليل البيانات وتفسير النتائج بشكل علمي ودقيق.</p>
+                            <ul>
+                                <li><i class="fas fa-clock"></i> 15 ساعة</li>
+                                <li><i class="fas fa-cogs"></i> محاور الدورة: تحليل البيانات باستخدام SPSS، إجراء الاختبارات الإحصائية، تفسير النتائج</li>
+                                <li><i class="fas fa-check-circle"></i> تعلم كيفية استخدام SPSS في الأبحاث العلمية</li>
+                            </ul>
+                            <a href="#register" class="btn cta-button btn-lg">احجز مقعدك الآن</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits" class="bg-light-gradient py-5">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <div class="section-subtitle">المميزات</div>
+                <h2 class="section-heading">لماذا تختار هذه الدورات؟</h2>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="benefits-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <h4>محتوى متميز</h4>
+                        <p>دورات احترافية مع محاضرات فيديوية تشرح كل جزئية من الدورة بطريقة واضحة ومبسطة.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="benefits-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <h4>شهادات معترف بها</h4>
+                        <p>بعد إتمام الدورة، ستتلقى شهادة معترف بها يمكن إضافتها إلى سيرتك الذاتية.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="benefits-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h4>دعم مباشر</h4>
+                        <p>توفير دعم مباشر من المدرب للرد على استفساراتك وتوجيهك أثناء الدورة.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Special Offer Section -->
+    <section id="special-offer" class="py-5">
+        <div class="container text-center">
+            <div class="special-offer-card">
+                <div class="special-offer-tag">عرض خاص</div>
+                <h3>خصم 30% على الحجز المسبق!</h3>
+                <p>سارع بالحجز الآن للحصول على الخصم قبل نفاد الأماكن.</p>
+                <div class="special-offer-price">500 ريال</div>
+                <a href="#register" class="btn cta-button btn-lg">احجز الآن</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Free Gifts Section -->
+    <section id="free-gifts" class="bg-light-gradient py-5">
+        <div class="container text-center">
+            <h2>هدايا مجانية للمسجلين</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="free-gift">
+                        <h4>دورة إضافية مجانية</h4>
+                        <p>احصل على دورة مجانية في كتابة الأبحاث العلمية عند التسجيل في الدورة الحالية.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="free-gift">
+                        <h4>استشارات مجانية</h4>
+                        <p>احصل على استشارات مجانية من المدرب خلال الدورة لمساعدتك في تطوير مهاراتك.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="free-gift">
+                        <h4>شهادة مهنية</h4>
+                        <p>شهادة معتمدة تُثبت إتمامك للدورة واحترافك في المجال.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instructor Section -->
+    <section id="instructor" class="py-5">
+        <div class="container text-center">
+            <div class="instructor-section">
+                <img src="images/14.jpg" alt="Instructor" class="instructor-img">
+                <h3>مدرب الدورة</h3>
+                <p>د. أحمد محمد، أستاذ جامعي متخصص في الكتابة الأكاديمية والتحليل الإحصائي باستخدام SPSS. لديه أكثر من 10 سنوات من الخبرة في التدريس والتدريب في هذا المجال.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-5">
+        <div class="container text-center">
+            <h2 class="section-heading">آراء الطلاب</h2>
+            <div class="testimonial-slider">
+                <div class="testimonial-card" data-aos="fade-up">
+                    <img src="images/41.jpg" alt="Student" class="testimonial-img">
+                    <p>كانت الدورة رائعة للغاية! تعلمت الكثير عن كيفية كتابة الأبحاث الأكاديمية والتحليل الإحصائي باستخدام SPSS. أوصي بها بشدة.</p>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+                    <img src="images/73.jpg" alt="Student" class="testimonial-img">
+                    <p>الدورة كانت مفيدة جدًا بالنسبة لي. المدرب كان محترفًا جدًا والشرح كان واضحًا وسهلًا.</p>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Form Section -->
+    <section id="register" class="register-section py-5">
+        <div class="container">
+            <h2 class="text-center text-white mb-5">سجل الآن للحصول على الدورة</h2>
+            <form action="#" method="POST">
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <label for="name" class="form-label">الاسم الكامل</label>
+                        <input type="text" id="name" name="name" class="form-control" required>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <label for="email" class="form-label">البريد الإلكتروني</label>
+                        <input type="email" id="email" name="email" class="form-control" required>
+                    </div>
+                    <div class="col-md-12 mb-4">
+                        <label for="phone" class="form-label">رقم الهاتف</label>
+                        <input type="tel" id="phone" name="phone" class="form-control" required>
+                    </div>
+                    <div class="col-md-12 mb-4">
+                        <label for="course" class="form-label">الدورة المراد التسجيل فيها</label>
+                        <select id="course" name="course" class="form-control">
+                            <option value="academic-writing">دورة الكتابة الأكاديمية</option>
+                            <option value="spss-analysis">دورة التحليل الإحصائي باستخدام SPSS</option>
+                        </select>
+                    </div>
+                    <div class="col-md-12">
+                        <button type="submit" class="btn cta-button btn-lg w-100">تسجيل الآن</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container text-center">
+            <p>&copy; 2025 أكاديمية المعرفة. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+</html>
